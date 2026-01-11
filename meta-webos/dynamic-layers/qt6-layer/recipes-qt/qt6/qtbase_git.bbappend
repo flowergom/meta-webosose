@@ -14,7 +14,9 @@ remove_LGPL3() {
 }
 
 # Disable features we don't use in all webOS products
-PACKAGECONFIG_DEFAULT:remove = "dbus"
+
+# Required dbus in qtconnectivity for QGroundcontrol
+PACKAGECONFIG:append = " dbus"
 
 # Enable accessibility for qtquickcontrols
 PACKAGECONFIG:append = " accessibility"
