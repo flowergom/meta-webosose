@@ -52,11 +52,3 @@ EXTRA_OECMAKE:append = " -DQT_SKIP_AUTO_PLUGIN_INCLUSION=ON"
 # Set USE_X11/EGL_NO_X11 explicitly for using some eglplatform header.
 # http://gecko.lge.com:8000/Errors/Details/750672
 TARGET_CFLAGS:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'x11', '-DUSE_X11', '-DEGL_NO_X11', d)}"
-
-do_install:append() {
-    # Remove files unnecessary or conflict with qtwayland-webos
-    rm -rf ${D}${QT6_INSTALL_PLUGINSDIR}/platforms \
-        ${D}${QT6_INSTALL_PLUGINSDIR}/wayland-decoration-client \
-        ${D}${QT6_INSTALL_PLUGINSDIR}/wayland-graphics-integration-client \
-        ${D}${QT6_INSTALL_PLUGINSDIR}/wayland-graphics-integration-server/libqt-wayland-compositor-wayland-eglstream-controller.so
-}
