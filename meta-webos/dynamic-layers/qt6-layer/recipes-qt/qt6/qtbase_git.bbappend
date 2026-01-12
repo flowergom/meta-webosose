@@ -15,14 +15,10 @@ remove_LGPL3() {
 
 # Disable features we don't use in all webOS products
 
-# Required dbus in qtconnectivity for QGroundcontrol
-PACKAGECONFIG:append = " dbus"
-
+# Required dbus, gui and widgets in qtconnectivity for QGroundcontrol
+PACKAGECONFIG:append = " dbus gui widgets"
 # Enable accessibility for qtquickcontrols
 PACKAGECONFIG:append = " accessibility"
-
-# Disable widget features
-PACKAGECONFIG:remove:class-target = "widgets"
 
 PACKAGECONFIG[printsupport] = "-DFEATURE_printsupport=ON,-DFEATURE_printsupport=OFF"
 # Needed by linguist of qttools
@@ -52,7 +48,6 @@ PACKAGECONFIG[no-imageio-text-loading] = "-DFEATURE_imageio_text_loading=OFF,-DF
 PACKAGECONFIG:append = " no-imageio-text-loading"
 
 PACKAGECONFIG[linuxfb] = "-DFEATURE_linuxfb=ON,-DFEATURE_linuxfb=OFF"
-PACKAGECONFIG:remove = "linuxfb"
 
 PACKAGECONFIG[ico] = "-DFEATURE_ico=ON,-DFEATURE_ico=OFF"
 PACKAGECONFIG:remove = "ico"
@@ -74,8 +69,6 @@ PACKAGECONFIG:append = " system-sqlite"
 
 PACKAGECONFIG[system-pcre2] = "-DFEATURE_system_pcre2=ON,-DFEATURE_system_pcre2=OFF"
 PACKAGECONFIG:remove = "system-pcre2"
-
-PACKAGECONFIG:remove = "libinput"
 
 PACKAGECONFIG:append = "${@bb.utils.contains_any('DISTRO_FEATURES', 'vulkan opengl', ' kms', '', d)}"
 
