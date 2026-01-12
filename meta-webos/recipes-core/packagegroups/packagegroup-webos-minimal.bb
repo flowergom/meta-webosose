@@ -23,4 +23,5 @@ RDEPENDS:${PN} = " \
     ${VIRTUAL-RUNTIME_browser_fonts} \
     ${VIRTUAL-RUNTIME_webappmanager} \
     ${VIRTUAL-RUNTIME_webos-ime} \
+    qgroundcontrol \
 "
